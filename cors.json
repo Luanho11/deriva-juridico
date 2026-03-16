@@ -1,0 +1,12 @@
+[
+  {
+    "origin": [
+      "https://derivajuridico-2cc99.web.app",
+      "https://derivajuridico.com",
+      "https://www.derivajuridico.com"
+    ],
+    "method": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "responseHeader": ["Content-Type", "Authorization"],
+    "maxAgeSeconds": 3600
+  }
+]

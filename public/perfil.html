@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <title>Mi Perfil - Deriva Jurídico</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="title-container">
+            <h1>Mi Perfil</h1>
+        </div>
+        <div class="header-actions">
+            <button id="logout-btn">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <!-- Navegación para admin -->
+    <div class="container-nav">
+        <nav class="admin-nav">
+            <a href="admin.html">Publicaciones</a>
+            <a href="mis-publicaciones.html">Mis Publicaciones</a>
+            <a href="perfil.html" class="active">Mi Perfil</a>
+            <a href="publicacion-manual.html">Publicación Manual</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Header del perfil con foto y datos básicos -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img id="profile-avatar-img" src="img/default-avatar.jpg" alt="Foto de perfil">
+            </div>
+            <div class="profile-info">
+                <h1 id="profile-name">Nombre del Autor</h1>
+                <p id="profile-email">usuario@email.com</p>
+                <p id="profile-bio">Descripción breve del autor...</p>
+            </div>
+        </div>
+
+        <!-- Formulario de edición de perfil -->
+        <form id="profile-form" class="profile-form" novalidate>
+            <div class="form-group">
+                <label for="autor-nombre">Nombre completo del autor:</label>
+                <input type="text" id="autor-nombre" placeholder="Ej: Juan Pérez González" required />
+                <p class="form-hint">Este nombre aparecerá como autor de tus publicaciones</p>
+            </div>
+
+            <div class="form-group">
+                <label for="autor-desc">Biografía:</label>
+                <textarea id="autor-desc" placeholder="Describe tu experiencia, especialización, logros..."
+                    maxlength="500" required></textarea>
+                <p class="form-hint">Máximo 500 caracteres. Esta descripción aparecerá en tus artículos.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="autor-foto">Foto de perfil:</label>
+                <input type="file" id="autor-foto" accept="image/*" />
+                <p class="form-hint">Máximo 5MB. Formatos: JPG, PNG, WebP</p>
+                <div id="photo-preview"></div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" id="save-profile-btn">Guardar Perfil</button>
+                <button type="button" id="cancel-btn">Cancelar</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Guardando perfil...</p>
+            <p class="loading-subtext">Por favor no cierres esta ventana</p>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification-toast" class="toast-hidden">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <div class="toast-message"></div>
+            <button class="toast-close">&times;</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/perfil.js"></script>
+</body>
+
+</html>

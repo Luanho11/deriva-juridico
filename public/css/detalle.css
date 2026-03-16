@@ -1,0 +1,834 @@
+/* ============================================================
+   DETALLE.CSS – Layout y estilos de página de artículo
+   ============================================================ */
+
+/* Evita el scroll horizontal en toda la página de detalle */
+body {
+    overflow-x: hidden;
+}
+
+.article-container {
+    display: flex;
+    flex-direction: column;
+    /* min() garantiza que nunca supere el viewport en móvil */
+    max-width: min(860px, 100%);
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    gap: 0;
+    /* Contiene hijos que pudieran desbordar (ej: textos sin espacios) */
+    overflow: hidden;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.article-media {
+    display: none !important;
+}
+
+.article-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.article-header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.article-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.article-header-top>div:first-child {
+    flex: 1;
+}
+
+.article-title {
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    color: #004f64;
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+    font-family: 'Lora', serif;
+}
+
+.article-subtitle {
+    color: #666;
+    font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+    line-height: 1.4;
+    font-family: 'Inter', sans-serif;
+}
+
+.article-text {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    text-align: justify;
+}
+
+.article-text h3 {
+    grid-column: 1 / -1;
+    margin-bottom: 0.4rem;
+}
+
+.resumen-content h3 {
+    color: #004f64;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Lora', serif;
+}
+
+#article-resumen,
+.resumen-content p {
+    text-align: justify;
+    color: #444;
+    line-height: 1.75;
+    font-size: 0.97rem;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ── Sección Cita ──────────────────────────────────────────
+   Fix 4: eliminado font-style:italic del texto base.
+   Ahora solo los fragmentos marcados con <em> aparecen
+   en cursiva, tal como el admin los formateó. */
+.citation-section {
+    padding: 1rem 1rem 1rem 1.25rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #004f64;
+}
+
+.citation-section h3 {
+    color: #004f64;
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+    font-family: 'Lora', serif;
+}
+
+/* ← Ya NO tiene font-style: italic por defecto */
+.citation-text {
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.93rem;
+    margin: 0;
+    text-align: justify;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Los <em> dentro de la cita sí son cursiva */
+.citation-text em,
+.citation-text i {
+    font-style: italic;
+    color: #444;
+}
+
+/* ── Botones de acción ──────────────────────────────────── */
+.file-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.action-button {
+    flex: 1;
+    padding: 0.9rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 0.97rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    transition: opacity 0.2s, transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.action-button:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.action-button:active {
+    opacity: 0.75;
+}
+
+.action-button.visualizar {
+    background: #212121;
+    color: white;
+}
+
+.action-button.descargar {
+    background: #004f64;
+    color: white;
+}
+
+/* ── Sección de autor ───────────────────────────────────── */
+.author-section {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    align-items: flex-start;
+}
+
+.author-photo-container {
+    flex-shrink: 0;
+}
+
+.author-photo {
+    width: 90px;
+    height: 110px;
+    border-radius: 6px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.author-info h3 {
+    color: #004f64;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.2rem;
+    opacity: 0.7;
+    font-family: 'Inter', sans-serif;
+}
+
+.author-info h4 {
+    color: #004f64;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Lora', serif;
+}
+
+.author-description {
+    color: #555;
+    line-height: 1.65;
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: justify;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ── Botón Compartir ────────────────────────────────────── */
+.share-button-container {
+    flex-shrink: 0;
+}
+
+.share-button {
+    background-color: #0066a1;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.share-button:hover {
+    background-color: #004d7a;
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0, 102, 161, 0.3);
+}
+
+.share-button:active {
+    transform: scale(0.95);
+}
+
+/* ── Loader ─────────────────────────────────────────────── */
+.loader {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.loader.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.logo-loader-container {
+    text-align: center;
+}
+
+.loading-logo {
+    width: 80px;
+    animation: softPulse 0.7s infinite ease-in-out;
+}
+
+@keyframes softPulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        filter: grayscale(80%);
+    }
+
+    50% {
+        opacity: 1;
+        filter: grayscale(0%);
+    }
+}
+
+/* ── Modal PDF ──────────────────────────────────────────── */
+.pdf-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 1002;
+    /* por encima del header sticky (z-index: 1001) */
+    overflow: hidden;
+    touch-action: none;
+}
+
+.pdf-modal.open {
+    display: flex;
+    flex-direction: column;
+}
+
+.pdf-modal-content {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.pdf-close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1003;
+    line-height: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.pdf-close:hover,
+.pdf-close:active {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#pdf-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* ── Modal Compartir ────────────────────────────────────── */
+.share-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.share-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-modal-content {
+    background-color: white;
+    padding: 28px 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    max-width: 480px;
+    width: 95%;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+.share-modal-content h3 {
+    margin: 0 0 22px;
+    font-size: 18px;
+    color: #212121;
+    font-weight: 600;
+    text-align: center;
+    font-family: 'Lora', serif;
+}
+
+.share-close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    font-size: 26px;
+    color: #999;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.share-close:hover {
+    color: #212121;
+    background: #f0f0f0;
+}
+
+.share-slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    justify-content: center;
+}
+
+.share-buttons-wrapper {
+    flex: 1;
+    overflow: hidden;
+    /* Aislamiento de desbordamiento para que no afecte al body */
+    contain: layout style;
+}
+
+.share-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 14px;
+    white-space: nowrap;
+    min-width: max-content;
+    transition: transform 0.3s ease;
+}
+
+.share-nav-button {
+    background: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #606060;
+    font-size: 16px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    padding: 0;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.share-nav-button.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.share-nav-button:hover {
+    background: #e0e0e0;
+    color: #212121;
+}
+
+.share-social-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #212121;
+    font-weight: 500;
+    font-size: 11px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.share-social-button:hover {
+    transform: scale(1.07);
+}
+
+.share-social-button:active {
+    transform: scale(0.95);
+}
+
+.share-social-button i {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.25s;
+}
+
+.share-social-button.facebook i {
+    background: #e7f3ff;
+    color: #1877f2;
+}
+
+.share-social-button.facebook:hover i {
+    background: #1877f2;
+    color: #fff;
+}
+
+.share-social-button.whatsapp i {
+    background: #e8f5e9;
+    color: #25d366;
+}
+
+.share-social-button.whatsapp:hover i {
+    background: #25d366;
+    color: #fff;
+}
+
+.share-social-button.twitter i {
+    background: #f0f0f0;
+    color: #000;
+}
+
+.share-social-button.twitter:hover i {
+    background: #000;
+    color: #fff;
+}
+
+.share-social-button.linkedin i {
+    background: #e8f4f8;
+    color: #0a66c2;
+}
+
+.share-social-button.linkedin:hover i {
+    background: #0a66c2;
+    color: #fff;
+}
+
+.share-social-button.instagram i {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #fff;
+}
+
+.share-social-button.instagram:hover i {
+    opacity: 0.82;
+}
+
+.share-social-button.reddit i {
+    background: #fff0f0;
+    color: #ff4500;
+}
+
+.share-social-button.reddit:hover i {
+    background: #ff4500;
+    color: #fff;
+}
+
+.share-social-button.email i {
+    background: #f0f0f0;
+    color: #606060;
+}
+
+.share-social-button.email:hover i {
+    background: #606060;
+    color: #fff;
+}
+
+.share-social-button.otros i {
+    background: #e8e8e8;
+    color: #333;
+}
+
+.share-social-button.otros:hover i {
+    background: #333;
+    color: #fff;
+}
+
+.share-url-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.share-url-input {
+    flex: 1;
+    padding: 11px 14px;
+    border: 1px solid #d0d0d0;
+    border-radius: 24px;
+    font-size: 13px;
+    color: #212121;
+    background: #f9f9f9;
+    transition: border-color 0.2s;
+    font-family: 'Inter', sans-serif;
+    min-width: 0;
+}
+
+.share-url-input:focus {
+    outline: none;
+    border-color: #0066a1;
+    background: white;
+}
+
+.share-copy-button {
+    background: #0066a1;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.share-copy-button:hover {
+    background: #004d7a;
+}
+
+.share-copy-button:active {
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(28px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE MÓVIL
+   ============================================================ */
+@media (max-width: 768px) {
+    .article-container {
+        margin: 1rem;
+        padding: 1.25rem 1rem;
+        border-radius: 8px;
+    }
+
+    .article-header-top {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .article-title {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+    }
+
+    .article-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .article-text {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .file-actions {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .action-button {
+        justify-content: center;
+        padding: 0.85rem 1rem;
+        font-size: 0.95rem;
+        min-height: 44px;
+    }
+
+    .author-section {
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .author-photo {
+        width: 70px;
+        height: 85px;
+        border-radius: 50%;
+    }
+
+    .author-info h4 {
+        font-size: 0.95rem;
+    }
+
+    .author-description {
+        font-size: 0.85rem;
+    }
+
+    .share-modal-content {
+        padding: 20px 16px;
+    }
+
+    .share-buttons-grid {
+        gap: 10px;
+    }
+
+    .share-social-button i {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+
+    .share-social-button {
+        font-size: 10px;
+        gap: 6px;
+    }
+
+    .share-url-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .share-url-input,
+    .share-copy-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-container {
+        margin: 0.5rem;
+        padding: 1rem 0.85rem;
+    }
+
+    .article-title {
+        font-size: 1.25rem;
+    }
+
+    .article-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .share-button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .author-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .author-photo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+
+    .author-description {
+        text-align: center;
+    }
+
+    .citation-section {
+        padding: 0.85rem 0.85rem 0.85rem 1rem;
+    }
+
+    /* Modal PDF completamente responsive en móvil */
+    .pdf-modal {
+        inset: 0;
+        padding: 0;
+    }
+
+    .pdf-modal-content {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .pdf-close {
+        right: 10px;
+        top: 10px;
+        font-size: 28px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #pdf-iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Soporte para pantallas aún más pequeñas */
+@media (max-height: 600px) {
+    .pdf-close {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+}
+

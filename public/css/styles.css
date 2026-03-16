@@ -1,0 +1,406 @@
+/* ============================================================
+   ESTILOS BASE COMUNES A TODAS LAS PÁGINAS
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Alegreya Sans SC", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+    background-color: #edfbfc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+/* ============================================================
+   BOTÓN HAMBURGUESA (solo visible en móvil)
+   ============================================================ */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    z-index: 1100;
+    position: relative;
+}
+
+.hamburger:hover {
+    background: rgba(0, 79, 100, 0.08);
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #004f64;
+    border-radius: 2px;
+    transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+/* Animación X cuando está abierto */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   OVERLAY (fondo oscuro al abrir el menú en móvil)
+   ============================================================ */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 900;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.nav-overlay.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* ============================================================
+   MENÚ DE NAVEGACIÓN – DESKTOP
+   ============================================================ */
+.barra_navegacion > ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 0;
+}
+
+.barra_navegacion ul li {
+    text-align: center;
+    position: relative;
+}
+
+.barra_navegacion ul li a:not(.loginbtn) {
+    color: #004f64;
+    font-weight: 600;
+    padding: 15px 20px;
+    transition: color 0.3s ease;
+    display: block;
+    white-space: nowrap;
+}
+
+.barra_navegacion ul li a:not(.loginbtn):hover {
+    color: #055B05;
+}
+
+/* --- Submenú Desktop --- */
+.submenu {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    background-color: #edfbfc;
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+    min-width: 100%;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 4px 4px;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border-top: 3px solid #055B05;
+}
+
+.submenu li a {
+    color: #004f64;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.submenu li a:hover {
+    color: #055B05;
+}
+
+.dropdown:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown:hover > a {
+    background-color: #e0f7fa;
+    border-radius: 4px 4px 0 0;
+}
+
+/* Botón Login */
+.loginbtn {
+    font-weight: bold;
+    background-color: #055B05;
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    display: inline-block !important;
+}
+
+.loginbtn:hover {
+    background-color: #004f64;
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   FOOTER GENERAL
+   ============================================================ */
+.footer-general {
+    background-color: #004f64;
+    color: white;
+    padding: 60px 40px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-general-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-general-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-col h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #ccc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.footer-col p {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.footer-col a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: #fff;
+}
+
+.footer-col i {
+    font-size: 16px;
+    min-width: 22px;
+}
+
+.footer-general .copyright {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* ============================================================
+   RESPONSIVE – MENÚ MÓVIL (≤ 900px)
+   ============================================================ */
+@media (max-width: 900px) {
+
+    /* Mostrar hamburguesa */
+    .hamburger {
+        display: flex;
+    }
+
+    /* El nav se convierte en panel lateral deslizante */
+    .barra_navegacion {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(320px, 85vw);
+        height: 100dvh;
+        background: #edfbfc;
+        z-index: 1000;
+        overflow-y: auto;
+        padding: 80px 0 40px;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .barra_navegacion.open {
+        right: 0;
+    }
+
+    /* Lista principal vertical */
+    .barra_navegacion > ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+    }
+
+    .barra_navegacion ul li {
+        width: 100%;
+        text-align: left;
+    }
+
+    .barra_navegacion ul li a:not(.loginbtn) {
+        padding: 14px 28px;
+        border-bottom: 1px solid rgba(0, 79, 100, 0.08);
+        font-size: 1rem;
+    }
+
+    /* Dropdown en móvil – submenú desplegable */
+    .submenu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border-top: none;
+        border-radius: 0;
+        background: rgba(0, 79, 100, 0.05);
+        display: none;
+        padding: 0;
+    }
+
+    .dropdown.mobile-open .submenu {
+        display: block;
+    }
+
+    .submenu li a {
+        padding: 11px 28px 11px 44px !important;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(0, 79, 100, 0.06);
+        display: block;
+    }
+
+    .dropdown > a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 20px;
+    }
+
+    /* Ocultar hover de desktop */
+    .dropdown:hover .submenu {
+        display: none;
+    }
+
+    .dropdown.mobile-open .submenu {
+        display: block !important;
+    }
+
+    .dropdown:hover > a {
+        background: none;
+        border-radius: 0;
+    }
+
+    /* Login como bloque al final */
+    .barra_navegacion .loginbtn {
+        display: block !important;
+        margin: 20px 28px 0;
+        text-align: center;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-size: 1rem;
+    }
+
+    li:has(.loginbtn) {
+        border-bottom: none;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE FOOTER (móvil pequeño)
+   ============================================================ */
+@media (max-width: 600px) {
+    .footer-general {
+        padding: 40px 20px 20px;
+    }
+
+    .footer-general-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-col {
+        min-width: unset;
+    }
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>Publicación Manual - Panel Administrativo</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="title-container">
+            <h1>Publicación Manual</h1>
+        </div>
+        <div class="header-actions">
+            <button id="logout-btn">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <div class="container-nav">
+        <nav class="admin-nav">
+            <a href="admin.html">Publicaciones</a>
+            <a href="mis-publicaciones.html">Mis Publicaciones</a>
+            <a href="perfil.html">Mi Perfil</a>
+            <a href="publicacion-manual.html" class="active">Publicación Manual</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Loader de verificación de permisos -->
+        <div class="logo-loader-container" id="page-loader">
+            <img src="img/DJ_Logo_PNG.png" class="loading-logo" alt="Verificando permisos...">
+        </div>
+
+        <!-- Mensaje de acceso denegado (oculto por defecto) -->
+        <div id="access-denied" class="hidden">
+            <i class="fas fa-lock"></i>
+            <h2>Acceso restringido</h2>
+            <p>Esta sección solo está disponible para administradores.</p>
+            <p style="margin-top:12px;"><a href="admin.html">← Volver al panel</a></p>
+        </div>
+
+        <!-- Formulario (oculto hasta verificar rol) -->
+        <div id="form-container" class="hidden">
+
+            <div class="admin-only-notice">
+                <i class="fas fa-info-circle"></i>
+                Esta página permite cargar publicaciones de <strong>autores externos</strong>
+                que hayan enviado su contenido por email. El autor indicado abajo aparecerá
+                en la publicación en lugar del administrador que la sube.
+            </div>
+
+            <form id="manual-form" novalidate>
+
+                <!-- ── Datos de la publicación ── -->
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" placeholder="Título de la publicación" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo">Tipo de publicación:</label>
+                    <select id="tipo" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="articulo">Artículo</option>
+                        <option value="columna">Columna</option>
+                        <option value="ensayo">Ensayo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Áreas Jurídicas:</label>
+                    <div id="areas-container" class="areas-container"></div>
+                    <div class="custom-area-row">
+                        <input type="text" id="nueva-area-input" placeholder="Agregar área personalizada..."
+                            maxlength="60" />
+                        <button type="button" id="agregar-area-btn">+ Agregar</button>
+                    </div>
+                    <p class="form-hint">Selecciona una o más áreas.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="resumen">Resumen:</label>
+                    <textarea id="resumen" placeholder="Resumen del artículo" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="imagen">Imagen de portada:</label>
+                    <input type="file" id="imagen" accept="image/*" />
+                    <p class="form-hint">Máx. 5MB. JPG, PNG, WebP.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="pdf">Archivo PDF:</label>
+                    <input type="file" id="pdf" accept="application/pdf" />
+                    <p class="form-hint">Máx. 10MB.</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Como Citar:</label>
+                    <div class="rich-editor-toolbar">
+                        <button type="button" class="toolbar-btn" id="btn-italic"
+                            title="Selecciona texto y aplica cursiva">
+                            <em>I</em>&nbsp;Cursiva
+                        </button>
+                    </div>
+                    <div id="cita-editor" contenteditable="true" class="cita-editor"
+                        placeholder="Escribe cómo debe citarse este trabajo..."></div>
+                    <p class="form-hint">Usa el botón Cursiva para el texto en itálica.</p>
+                </div>
+
+                <!-- ── Datos del autor externo ── -->
+                <div class="form-group">
+                    <div class="author-section-card">
+                        <h3><i class="fas fa-user-edit"></i> Datos del Autor Externo</h3>
+
+                        <div class="form-group">
+                            <label for="autor-nombre">Nombre completo del autor: <span
+                                    style="color:#cc2222">*</span></label>
+                            <input type="text" id="autor-nombre" placeholder="Ej: María García Rodríguez" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="autor-desc">Biografía del autor: <span style="color:#cc2222">*</span></label>
+                            <textarea id="autor-desc"
+                                placeholder="Describe la experiencia y especialización del autor..." rows="3"
+                                maxlength="500" required></textarea>
+                            <p class="form-hint">Máx. 500 caracteres.</p>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label for="autor-foto">Foto del autor:</label>
+                            <input type="file" id="autor-foto" accept="image/*" />
+                            <p class="form-hint">Máx. 5MB. Esta es la foto que envió el autor.</p>
+                            <div id="author-photo-preview"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="save-btn">
+                        <i class="fas fa-upload"></i> Publicar
+                    </button>
+                    <button type="button" id="cancel-btn" onclick="history.back()">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p id="loading-text">Subiendo publicación...</p>
+            <p class="loading-subtext">Por favor no cierres esta ventana</p>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="notification-toast" class="toast-hidden">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <div class="toast-message"></div>
+            <button class="toast-close">&times;</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/publicacion-manual.js"></script>
+</body>
+
+</html>

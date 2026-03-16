@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+  <title>__OG_TITLE__</title>
+  <meta name="description" content="__OG_DESCRIPTION__">
+  <meta name="keywords" content="__OG_KEYWORDS__">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="__OG_URL__">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Deriva Jurídico">
+  <meta property="og:title" content="__OG_TITLE__">
+  <meta property="og:description" content="__OG_DESCRIPTION__">
+  <meta property="og:image" content="__OG_IMAGE__">
+  <meta property="og:image:secure_url" content="__OG_IMAGE__">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="__OG_URL__">
+  <meta property="og:locale" content="es_PE">
+  <meta property="article:author" content="__OG_AUTHOR__">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@derivajuridico">
+  <meta name="twitter:title" content="__OG_TITLE__">
+  <meta name="twitter:description" content="__OG_DESCRIPTION__">
+  <meta name="twitter:image" content="__OG_IMAGE__">
+
+  <!-- ESTILOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/detalle.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="/"><img src="/img/DJ_Logo.jpg" alt="Deriva Juridico"></a>
+      </div>
+      <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="barra_navegacion" id="main-nav">
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/nosotros.html">Nosotros</a></li>
+          <li class="dropdown current-menu-item">
+            <a class="current-menu-item">Publicaciones</a>
+            <ul class="submenu">
+              <li><a href="/publicaciones.html">Artículos</a></li>
+              <li><a href="/columnas.html">Columnas</a></li>
+              <li><a href="/ensayos.html">Ensayos</a></li>
+            </ul>
+          </li>
+          <li><a href="#contacto">Contáctanos</a></li>
+          <li><a href="/login.html" class="loginbtn">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- NUEVO: overlay oscuro, se activa al abrir el menú -->
+  <div class="nav-overlay" aria-hidden="true"></div>
+
+  <div class="article-container">
+    <div class="article-media">
+      <img id="article-image" class="article-image" alt="Imagen del articulo">
+    </div>
+    <div class="article-details">
+      <div class="article-header">
+        <div class="article-header-top">
+          <div>
+            <h1 class="article-title" id="article-title"></h1>
+            <p class="article-subtitle" id="article-subtitle"></p>
+          </div>
+          <div class="share-button-container">
+            <button class="share-button" id="share-button" title="Compartir en redes sociales">
+              <i class="fas fa-share-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="article-text">
+        <div class="resumen-content">
+          <h3>Resumen</h3>
+          <p id="article-resumen"></p>
+        </div>
+        <div class="citation-section">
+          <h3>Como citar este articulo</h3>
+          <p id="article-citation" class="citation-text"></p>
+        </div>
+      </div>
+      <div class="file-actions">
+        <button class="action-button visualizar" id="view-pdf">
+          <i class="fas fa-eye"></i> Visualizar
+        </button>
+        <button class="action-button descargar" id="download-pdf">
+          <i class="fas fa-download"></i> Descargar
+        </button>
+      </div>
+      <div class="author-section">
+        <div class="author-photo-container">
+          <img id="author-photo" class="author-photo" alt="Foto del autor">
+        </div>
+        <div class="author-info">
+          <h3>Autor</h3>
+          <h4 id="author-name"></h4>
+          <p id="author-desc" class="author-description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loader" id="loader">
+    <div class="logo-loader-container">
+      <img src="/img/DJ_Logo_PNG.png" class="loading-logo" alt="Cargando...">
+    </div>
+  </div>
+
+  <div class="pdf-modal" id="pdf-modal">
+    <span class="pdf-close">&times;</span>
+    <div class="pdf-modal-content">
+      <iframe id="pdf-iframe"></iframe>
+    </div>
+  </div>
+
+  <div class="share-modal" id="share-modal">
+    <div class="share-modal-content">
+      <button class="share-close" id="share-close">&times;</button>
+      <h3>Compartir en</h3>
+      <div class="share-slider-container">
+        <button class="share-nav-button" id="share-nav-prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="share-buttons-wrapper">
+          <div class="share-buttons-grid" id="share-buttons-grid">
+            <button class="share-social-button facebook" id="share-facebook"><i
+                class="fab fa-facebook-f"></i><span>Facebook</span></button>
+            <button class="share-social-button whatsapp" id="share-whatsapp"><i
+                class="fab fa-whatsapp"></i><span>WhatsApp</span></button>
+            <button class="share-social-button twitter" id="share-twitter"><i
+                class="fab fa-x-twitter"></i><span>X</span></button>
+            <button class="share-social-button linkedin" id="share-linkedin"><i
+                class="fab fa-linkedin-in"></i><span>LinkedIn</span></button>
+            <button class="share-social-button instagram" id="share-instagram"><i
+                class="fab fa-instagram"></i><span>Instagram</span></button>
+            <button class="share-social-button reddit" id="share-reddit"><i
+                class="fab fa-reddit-alien"></i><span>Reddit</span></button>
+            <button class="share-social-button email" id="share-email"><i
+                class="fas fa-envelope"></i><span>Email</span></button>
+            <button class="share-social-button otros" id="share-otros"><i
+                class="fas fa-share-nodes"></i><span>Otros</span></button>
+          </div>
+        </div>
+        <button class="share-nav-button" id="share-nav-next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="share-url-container">
+        <input type="text" class="share-url-input" id="share-url-input" readonly>
+        <button class="share-copy-button" id="share-copy-button"><i class="fas fa-copy"></i> Copiar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-general">
+    <div class="footer-general-container">
+      <div class="footer-general-grid">
+        <div class="footer-col">
+          <h3>Redes Sociales</h3>
+          <ul>
+            <li><a href="https://www.facebook.com/share/1DceHEVWfX/"><i class="fa-brands fa-square-facebook"></i> Facebook</a></li>
+            <li><a href="https://www.linkedin.com/company/derivajuridico/"><i class="fa-brands fa-linkedin"></i> Linkedin</a></li>
+            <li><a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i> Youtube</a></li>
+            <li><a href="https://www.instagram.com/derivajuridico?igsh=dHRucXNoMmtlNDE4"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@derivajuridico"><i class="fa-brands fa-tiktok"></i> Tiktok</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 id="contacto">Contáctenos</h3>
+          <p>Para consultas profesionales escríbanos a<br>
+            <a href="mailto:derivajuridico@gmail.com">derivajuridico@gmail.com</a>
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Publica con Nosotros</h3>
+          <p>¿Tienes un artículo, columna o ensayo jurídico?<br>
+            Envíanos al correo
+            <a href="mailto:derivajuridico@gmail.com">derivajuridico@gmail.com</a>
+            con:
+          </p>
+          <ul style="margin-top:10px; padding-left:0; list-style:none;">
+            <li style="margin-bottom:8px; color:#ccc;"><i class="fas fa-file-alt" style="min-width:20px;"></i> Título y resumen</li>
+            <li style="margin-bottom:8px; color:#ccc;"><i class="fas fa-file-pdf" style="min-width:20px;"></i> Archivo PDF del trabajo</li>
+            <li style="margin-bottom:8px; color:#ccc;"><i class="fas fa-image" style="min-width:20px;"></i> Imagen de portada</li>
+            <li style="margin-bottom:8px; color:#ccc;"><i class="fas fa-user" style="min-width:20px;"></i> Breve biografía y foto del autor</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>©2025 Deriva Juridico. Todos los derechos reservados</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/detalle.js"></script>
+  <script type="module" src="/js/config.js"></script>
+  <script src="/js/share.js"></script>
+  <script src="/js/nav.js"></script>
+</body>
+
+</html>

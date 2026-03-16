@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>Mis Publicaciones - Panel Administrativo</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Mis publicaciones">
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="title-container">
+            <h1>Mis Publicaciones</h1>
+        </div>
+        <div class="header-actions">
+            <button id="logout-btn">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <div class="container-nav">
+        <nav class="admin-nav">
+            <a href="admin.html">Publicaciones</a>
+            <a href="mis-publicaciones.html" class="active">Mis Publicaciones</a>
+            <a href="perfil.html">Mi Perfil</a>
+            <a href="publicacion-manual.html">Publicación Manual</a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="controls-section">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Buscar mis publicaciones...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="pagination-controls">
+                <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+                <span id="current-page">1</span>
+                <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Loader de lista -->
+        <div class="logo-loader-container" id="list-loader">
+            <img src="img/DJ_Logo_PNG.png" class="loading-logo" alt="Cargando...">
+        </div>
+
+        <section id="post-section">
+            <ul id="post-list"></ul>
+        </section>
+    </main>
+
+    <!-- Loading -->
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="notification-toast" class="toast-hidden">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <div class="toast-message"></div>
+            <button class="toast-close">&times;</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/mis-publicaciones.js"></script>
+</body>
+
+</html>

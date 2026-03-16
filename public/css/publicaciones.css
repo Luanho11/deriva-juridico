@@ -1,0 +1,389 @@
+/* Solo aplica al enlace directo del li con current-menu-item */
+.barra_navegacion > ul > li.current-menu-item > a {
+    color: #007bff !important;
+}
+
+/* Para el dropdown, aplica solo al enlace principal */
+.barra_navegacion > ul > li.dropdown.current-menu-item > a {
+    color: #007bff !important;
+}
+
+/* Agregar esta regla en publicaciones.css */
+.post-type {
+    font-size: 0.9rem;
+    color: #007bff;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+
+/* Controles */
+.controls-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    gap: 20px;
+}
+
+.search-box {
+    position: relative;
+    flex-grow: 1;
+    max-width: 500px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 12px 40px 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+.search-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagination-controls button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.pagination-controls button:hover {
+    background: #0056b3;
+}
+
+.pagination-controls button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+#current-page {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Grid de publicaciones */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.post-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.post-card:hover {
+    transform: translateY(-3px);
+}
+
+.post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #eee;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+.post-content h3 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+}
+
+.post-summary {
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+}
+
+.post-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.post-subtitle {
+    font-size: 0.9rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.post-summary {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.file-links {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.file-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.file-link:hover {
+    color: #0056b3;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.post-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.post-actions .edit-btn {
+    background: #28a745;
+    color: white;
+}
+
+.post-actions .delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.post-actions button:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .controls-section {
+        flex-direction: column;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+}
+
+/* Loader con efecto de respiración */
+.logo-loader-container {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.logo-loader-container.visible {
+    display: flex;
+}
+
+.loading-logo {
+    width: 80px;
+    animation: softPulse 0.7s infinite ease-in-out;
+}
+
+@keyframes softPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        filter: grayscale(80%);
+    }
+
+    50% {
+        opacity: 1;
+        filter: grayscale(0%);
+    }
+}
+
+/* Layout principal */
+.main-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    position: relative;
+}
+
+.filter-container {
+    width: 280px;
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 120px;
+}
+
+.filter-container h3 {
+    margin: 0 0 20px 0;
+    color: #2c3e50;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-button::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border: 2px solid #007bff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    background: #007bff15;
+    transform: translateX(5px);
+}
+
+.filter-button.active {
+    background: #007bff;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.filter-button.active::before {
+    background: #ffffff;
+    border-color: white;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+main.container {
+    padding-top: 0px;
+}
+
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-container {
+        margin-top: 50px;
+        width: 100%;
+        position: static;
+        margin-bottom: 0px;
+        padding: 20px;
+    }
+
+    .content-wrapper {
+        width: 100% !important;
+    }
+}
+
+/* ==================== ESTILOS PARA AUTOR EN PUBLICACIONES ==================== */
+
+/* Nombre del autor en las tarjetas de publicaciones */
+.post-author {
+    font-size: 0.9rem;
+    color: var(--primary-color, #055B05);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-weight: 500;
+}
+
+.post-author strong {
+    font-weight: 600;
+}
+
+/* En cards de publicaciones (publicaciones.html, columnas.html, ensayos.html) */
+.posts-grid .post-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.posts-grid .post-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.posts-grid .post-author {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-author {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .post-author {
+        font-size: 0.8rem;
+        margin-top: 8px;
+        padding-top: 8px;
+    }
+}

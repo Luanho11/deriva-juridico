@@ -1,0 +1,575 @@
+/* nosotros.css - CON ESPACIADO AJUSTADO Y ANIMACIONES RESTAURADAS */
+
+/* ESTILOS ESPECÍFICOS PARA NOSOTROS */
+.nosotros-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+   ========================= */
+
+.organigrama {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px; /* Un poco más de espacio entre niveles */
+    margin: 50px auto; /* Más espacio arriba y abajo */
+    max-width: 1200px;
+    position: relative;
+}
+
+/* =========================
+   NIVELES DEL ORGANIGRAMA
+   ========================= */
+
+.nivel-organigrama {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin: 10px 0; /* Espacio adicional arriba y abajo de cada nivel */
+}
+
+/* Título dentro de cada nivel */
+.nivel-titulo {
+    text-align: center;
+    color: #004f64;
+    margin: 0 0 45px 0; /* Un poco más de espacio debajo del título */
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+    width: 100%;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.nivel-titulo::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: #3c5a6f;
+}
+
+/* Contenedor de personas en cada nivel */
+.nivel-personas {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    position: relative;
+}
+
+/* Para el nivel de secretaria (solo una persona) */
+.nivel-secretaria .nivel-personas {
+    justify-content: center;
+}
+
+/* Para el nivel de asociados (muchas personas) */
+.nivel-asociados .nivel-personas {
+    gap: 25px;
+}
+
+/* =========================
+   PERSONAS
+   ========================= */
+
+.persona {
+    text-align: center;
+    width: 160px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.persona img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #3c5a6f;
+    background-color: #f0f0f0;
+    object-position: center;
+    margin: 0 auto 12px auto;
+    display: block;
+}
+
+.persona.small img {
+    width: 90px;
+    height: 90px;
+}
+
+.persona h4 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    color: #004f64;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.persona p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.3;
+    text-align: center;
+    margin: 0;
+}
+
+/* =========================
+   CONECTORES - ESTILO CON LÍNEAS VERTICALES CORTAS
+   ========================= */
+
+/* Línea vertical desde cada persona hacia abajo */
+.persona::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 40px;
+    background: #2c3e50;
+    z-index: 1;
+}
+
+/* Última fila sin líneas verticales */
+.nivel-asociados .persona::after {
+    display: none;
+}
+
+/* Línea vertical especial desde secretaria hacia asociados */
+.nivel-secretaria .persona::after {
+    margin-top: 5px;
+    height: 30px; 
+    background: #2c3e50;
+}
+
+/* Línea vertical desde cada socio hacia secretaria */
+.nivel-socios .persona::after {
+    margin-top: 5px;
+    height: 40px; 
+    background: #2c3e50;
+}
+
+/* =========================
+   TÍTULO PRINCIPAL
+   ========================= */
+
+h1 {
+    color: #004f64;
+    text-align: center;
+    margin: 25px 0 50px 0; /* Más espacio debajo */
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* =========================
+   ANIMACIONES ORIGINALES RESTAURADAS
+   ========================= */
+
+@keyframes show {
+    from {
+        opacity: 0;
+        scale: 25%;
+    }
+    to {
+        opacity: 1;
+        scale: 100%;
+    }
+}
+
+/* Aplicar animación solo a imágenes que no sean el logo */
+.persona img {
+    view-timeline-name: --image;
+    view-timeline-axis: block;
+    animation-timeline: --image;
+    animation-name: show;
+    animation-range: entry 25% cover 30%;
+    animation-fill-mode: both;
+}
+
+/* Excluir logo de la animación */
+.logo img {
+    animation: none !important;
+    view-timeline-name: none !important;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 992px) {
+    .organigrama {
+        gap: 60px; /* Reducir un poco en tablet */
+        margin: 40px auto;
+    }
+    
+    .nivel-organigrama {
+        margin: 8px 0;
+    }
+    
+    .nivel-titulo {
+        margin-bottom: 35px;
+    }
+    
+    .nivel-personas {
+        gap: 30px;
+    }
+    
+    .nivel-asociados .nivel-personas {
+        gap: 20px;
+    }
+    
+    .persona {
+        width: 140px;
+    }
+    
+    .persona img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .persona.small img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .persona h4 {
+        font-size: 13px;
+        min-height: 34px;
+    }
+    
+    .persona p {
+        font-size: 12px;
+    }
+    
+    .nivel-titulo {
+        font-size: 1.3rem;
+    }
+    
+    h1 {
+        margin: 20px 0 40px 0;
+        font-size: 1.8rem;
+    }
+    
+    /* Ajustar alturas de líneas en tablet */
+    .nivel-socios .persona::after {
+        height: 60px;
+    }
+    
+    .nivel-secretaria .persona::after {
+        height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nosotros-container {
+        padding: 15px;
+    }
+    
+    .organigrama {
+        gap: 50px;
+        margin: 30px auto;
+    }
+    
+    .nivel-organigrama {
+        margin: 6px 0;
+    }
+    
+    .nivel-titulo {
+        margin-bottom: 30px;
+    }
+    
+    .nivel-personas {
+        gap: 25px;
+    }
+    
+    .nivel-asociados .nivel-personas {
+        gap: 15px;
+    }
+    
+    .persona {
+        width: 120px;
+    }
+    
+    .persona img {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .persona.small img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .persona h4 {
+        font-size: 12px;
+        min-height: 32px;
+    }
+    
+    .persona p {
+        font-size: 11px;
+    }
+    
+    .nivel-titulo {
+        font-size: 1.2rem;
+        letter-spacing: 0.5px;
+    }
+    
+    h1 {
+        font-size: 1.7rem;
+        margin: 18px 0 35px 0;
+    }
+    
+    /* Ajustar alturas de líneas en móviles */
+    .nivel-socios .persona::after {
+        height: 50px;
+    }
+    
+    .nivel-secretaria .persona::after {
+        height: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .organigrama {
+        gap: 45px;
+    }
+    
+    .nivel-organigrama {
+        margin: 5px 0;
+    }
+    
+    .nivel-titulo {
+        margin-bottom: 25px;
+    }
+    
+    .nivel-personas {
+        gap: 20px;
+    }
+    
+    .nivel-asociados .nivel-personas {
+        gap: 12px;
+    }
+    
+    .persona {
+        width: 110px;
+    }
+    
+    .persona img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .persona.small img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .persona h4 {
+        font-size: 11px;
+        min-height: 30px;
+    }
+    
+    .persona p {
+        font-size: 10px;
+    }
+    
+    .nivel-titulo {
+        font-size: 1.1rem;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+        margin: 15px 0 30px 0;
+    }
+    
+    /* Ocultar líneas en móviles pequeños */
+    .persona::after {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .organigrama {
+        gap: 40px;
+        margin: 25px auto;
+    }
+    
+    .nivel-organigrama {
+        margin: 4px 0;
+    }
+    
+    .nivel-titulo {
+        margin-bottom: 20px;
+    }
+    
+    .nivel-personas {
+        gap: 15px;
+    }
+    
+    .nivel-asociados .nivel-personas {
+        gap: 10px;
+    }
+    
+    .persona {
+        width: 100px;
+    }
+    
+    .persona img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .persona.small img {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .persona h4 {
+        font-size: 10px;
+        min-height: 28px;
+    }
+    
+    .nivel-titulo {
+        font-size: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+        margin: 12px 0 25px 0;
+    }
+}
+
+/* Estilo para elementos del menú actual */
+.current-menu-item a {
+    color: #007bff !important;
+}
+
+/* Estilos para imágenes sin src (placeholders) */
+.persona img:not([src]), 
+.persona img[src=""] {
+    background: linear-gradient(135deg, #e0e0e0 25%, #f5f5f5 25%, #f5f5f5 50%, #e0e0e0 50%, #e0e0e0 75%, #f5f5f5 75%);
+    background-size: 20px 20px;
+    position: relative;
+}
+
+.persona img:not([src])::after, 
+.persona img[src=""]::after {
+    content: "Sin foto";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* ==================== SECCIÓN QUIÉNES SOMOS ==================== */
+
+.about-section {
+    background: white;
+    padding: 60px 20px;
+    margin-bottom: 60px;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-logo {
+    text-align: center;
+}
+
+.about-logo img {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.about-logo p {
+    font-size: 1.2rem;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.about-content h3 {
+    font-size: 1.8rem;
+    color: #004f64;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.about-content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-logo img {
+        max-width: 250px;
+    }
+
+    .about-logo h2 {
+        font-size: 2rem;
+    }
+
+    .about-section {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-logo h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-logo p {
+        font-size: 1rem;
+    }
+
+    .about-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .about-content p {
+        font-size: 0.95rem;
+    }
+}

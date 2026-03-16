@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- SEO -->
+    <title>Ensayos Jurídicos - Deriva Jurídico</title>
+    <meta name="description"
+        content="Ensayos jurídicos especializados en Derecho Civil y Arbitraje. Análisis legal, doctrina y jurisprudencia actualizada en Perú.">
+    <meta name="keywords"
+        content="ensayos derecho civil, publicaciones jurídicas, análisis legal perú, doctrina derecho">
+    <meta name="robots" content="index, follow">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Ensayos Jurídicos - Deriva Jurídico">
+    <meta property="og:description" content="Ensayos jurídicos especializados en Derecho Civil y Arbitraje en Perú.">
+    <meta property="og:image" content="https://derivajuridico-2cc99.web.app/img/DJ_Logo.jpg">
+    <meta property="og:url" content="https://derivajuridico-2cc99.web.app/ensayos.html">
+    <meta property="og:type" content="website">
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/publicaciones.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="/">
+                    <img src="img/DJ_Logo.jpg" alt="Deriva Juridico">
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <!-- Barra de navegación -->
+            <nav class="barra_navegacion" id="main-nav">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+
+                    <li class="dropdown current-menu-item">
+                        <a class="current-menu-item">Publicaciones</a>
+                        <ul class="submenu">
+                            <li><a href="publicaciones.html">Artículos</a></li>
+                            <li><a href="columnas.html">Columnas</a></li>
+                            <li><a href="ensayos.html">Ensayos</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#contacto">Contáctanos</a></li>
+                    <li><a href="login.html" class="loginbtn">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- NUEVO: overlay oscuro, se activa al abrir el menú -->
+    <div class="nav-overlay" aria-hidden="true"></div>
+
+    <!-- Contenido Principal -->
+    <main class="container main-layout">
+        <!-- Filtro lateral -->
+        <aside class="filter-container">
+            <h3>Filtrar por...</h3>
+            <div class="filter-buttons">
+                <!-- Los botones se generarán dinámicamente -->
+            </div>
+        </aside>
+
+        <!-- Contenedor de contenido -->
+        <div class="content-wrapper">
+            <!-- Sección de controles (búsqueda y paginación) -->
+            <section class="controls-section">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Buscar ensayos...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="pagination-controls">
+                    <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+                    <span id="current-page">1</span>
+                    <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Loader -->
+            <div class="logo-loader-container">
+                <img src="img/DJ_Logo_PNG.png" class="loading-logo" alt="Cargando...">
+            </div>
+
+            <!-- Sección de Publicaciones -->
+            <section id="post-section">
+                <div class="posts-grid" id="post-list">
+                    <!-- Las publicaciones se cargarán aquí -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-general">
+        <div class="footer-general-container">
+            <div class="footer-general-grid">
+                <!-- Columna Redes Sociales -->
+                <div class="footer-col">
+                    <h3>Redes Sociales</h3>
+                    <ul>
+                        <li>
+                            <a href="https://www.facebook.com/share/1DceHEVWfX/">
+                                <i class="fa-brands fa-square-facebook"></i> Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/derivajuridico/">
+                                <i class="fa-brands fa-linkedin"></i> Linkedin
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/">
+                                <i class="fa-brands fa-youtube"></i> Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/derivajuridico?igsh=dHRucXNoMmtlNDE4">
+                                <i class="fa-brands fa-instagram"></i> Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.tiktok.com/@derivajuridico">
+                                <i class="fa-brands fa-tiktok"></i> Tiktok
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Columna Contacto -->
+                <div class="footer-col">
+                    <h3 id="contacto">Contáctenos</h3>
+                    <p>Para consultas profesionales escribanos a<br>
+                        <a href="mailto:derivajuridico@gmail.com">derivajuridico@gmail.com</a>
+                    </p>
+                </div>
+
+                <!-- Columna Envía tu publicación -->
+                <div class="footer-col">
+                    <h3>Publica con Nosotros</h3>
+                    <p>¿Tienes un artículo, columna o ensayo jurídico?<br>
+                        Envíanos al correo
+                        <a href="mailto:derivajuridico@gmail.com">derivajuridico@gmail.com</a>
+                        con:
+                    </p>
+                    <ul style="margin-top:10px; padding-left:0; list-style:none;">
+                        <li style="margin-bottom:8px; color:#ccc;">
+                            <i class="fas fa-file-alt" style="min-width:20px;"></i> Título y resumen
+                        </li>
+                        <li style="margin-bottom:8px; color:#ccc;">
+                            <i class="fas fa-file-pdf" style="min-width:20px;"></i> Archivo PDF del trabajo
+                        </li>
+                        <li style="margin-bottom:8px; color:#ccc;">
+                            <i class="fas fa-image" style="min-width:20px;"></i> Imagen de portada
+                        </li>
+                        <li style="margin-bottom:8px; color:#ccc;">
+                            <i class="fas fa-user" style="min-width:20px;"></i> Breve biografía y foto del autor
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="copyright">
+                <p>©2025 Deriva Juridico. Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/publicaciones.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+
+</html>

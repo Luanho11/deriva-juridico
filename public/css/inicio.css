@@ -1,0 +1,238 @@
+/* ------------------------------ */
+/*         Estado activo          */
+/* ------------------------------ */
+/* Marca el enlace del menú actual */
+.current-menu-item a {
+    color: #007bff !important;
+}
+
+/* ------------------------------ */
+/*          Sección Hero          */
+/* ------------------------------ */
+/* Contenedor principal del Hero con fondo y gradiente */
+.hero {
+    background:
+        linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1.4)),
+        url('../img/bg_img.jpg') center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Capa superpuesta para oscurecer el fondo */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor del contenido del Hero */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    max-width: 800px;
+}
+
+/* Título del Hero */
+.hero h1 {
+    text-align: center;
+    font-size: 42px;
+    margin-top: 350px;
+    line-height: 1.2;
+}
+
+/* ------------------------------ */
+/*       Sección de Servicios     */
+/* ------------------------------ */
+/* Contenedor de la sección de servicios */
+.services {
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* Título de sección */
+.section-title {
+    margin-bottom: 50px;
+    color: #1a3e6f;
+}
+
+/* Grid para servicios (no utilizado en el index, pero se mantiene) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Tarjeta de servicio */
+.service-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    transition: transform 0.3s;
+}
+
+/* Efecto hover en la tarjeta de servicio */
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+/* ------------------------------ */
+/*         Acceso Rápido         */
+/* ------------------------------ */
+/* Sección de Quick Links */
+.quick-links {
+    padding: 80px 0;
+}
+
+/* Contenedor flexible para las tarjetas de enlace */
+.links-grid {
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    gap: 40px;
+    /* Espacio entre tarjetas */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta de enlace */
+.link-card {
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    width: 45%;
+    /* Ancho similar para ambas tarjetas */
+    height: 400px;
+    /* Altura fija */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    /* Transición suave para todos los efectos */
+}
+
+/* Imagen de fondo en la tarjeta */
+.link-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cubre todo el espacio sin distorsión */
+    transition: transform 0.5s ease;
+}
+
+/* Efecto hover para ampliar la imagen */
+.link-card:hover img {
+    transform: scale(1.10);
+}
+
+/* Contenido de la tarjeta (texto y botón) */
+.link-card h4 {
+    text-decoration: none;
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    width: 100%;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+/* Enlaces dentro del título */
+.link-card h4 a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Botón de la tarjeta */
+.link-card .btn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    z-index: 2;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Se ha eliminado la regla duplicada de hover para .btn.
+   Se mantiene la siguiente regla combinada: */
+
+/* Efecto hover coordinado en el botón */
+.link-card:hover .btn {
+    background-color: #055B05 !important;
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* Overlay para la primera tarjeta (fondo negro) */
+.link-card:first-child::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1.5), transparent);
+    z-index: 1;
+}
+
+/* Overlay para la segunda tarjeta (personalizable) */
+.link-card:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1.5), transparent);
+    z-index: 1;
+}
+
+/* ------------------------------ */
+/*           Responsive           */
+/* ------------------------------ */
+@media (max-width: 768px) {
+    .links-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .link-card {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+/* ------------------------------ */
+/*        Enlaces de Imagen       */
+/* ------------------------------ */
+/* Asegura que el enlace de imagen ocupe todo el espacio */
+.image-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+/* Mantiene el efecto de zoom en la imagen enlazada */
+.image-link img {
+    transition: transform 0.5s ease;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
